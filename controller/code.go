@@ -7,6 +7,8 @@ const (
 	CodeInvalidParam
 	CodeServerBusy
 	CodeError
+	CodeNeedLogin
+	CodeInvalidToken
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -14,6 +16,8 @@ var codeMsgMap = map[ResCode]string{
 	CodeInvalidParam: "invalid param",
 	CodeServerBusy:   "server busy",
 	CodeError:        "error",
+	CodeNeedLogin:    "need login",
+	CodeInvalidToken: "invalid token",
 }
 
 func (c ResCode) Msg() string {

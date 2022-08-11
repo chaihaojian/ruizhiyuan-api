@@ -1,8 +1,10 @@
 package routes
 
 import (
-	"JByun/logger"
 	"net/http"
+	"ruizhiyuan/controller"
+	"ruizhiyuan/logger"
+	"ruizhiyuan/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,6 +19,17 @@ func Setup() *gin.Engine {
 			"message": "http server ok!",
 		})
 	})
+
+	r.POST("/login", controller.LoginHandler)
+
+	admin := r.Group("/admin", middleware.JWTAuthMiddleware())
+	{
+		admin.POST("/update", func(c *gin.Context) {
+			c.JSON(http.StatusOK, gin.H{
+				"message": "login success",
+			})
+		})
+	}
 
 	return r
 }

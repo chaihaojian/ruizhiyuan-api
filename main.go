@@ -1,12 +1,12 @@
 package main
 
 import (
-	"JByun/config"
-	"JByun/dao/mysql"
-	"JByun/logger"
-	"JByun/routes"
 	"fmt"
 	"go.uber.org/zap"
+	"ruizhiyuan/config"
+	"ruizhiyuan/dao/mysql"
+	"ruizhiyuan/logger"
+	"ruizhiyuan/routes"
 )
 
 func main() {
