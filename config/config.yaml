@@ -2,6 +2,8 @@ app:
   name: "ruizhiyuan-api"
   mode: "dev"
   port: 8080
+  start_time: "2022-08-18"
+  machine_id: 1
 logger:
   level:  "debug"
   filename:  "./ruizhiyuan.log"

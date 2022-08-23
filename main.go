@@ -6,6 +6,7 @@ import (
 	"ruizhiyuan/config"
 	"ruizhiyuan/dao/mysql"
 	"ruizhiyuan/logger"
+	"ruizhiyuan/pkg/snowflake"
 	"ruizhiyuan/routes"
 )
 
@@ -25,6 +26,10 @@ func main() {
 		fmt.Printf("Init mysql faild, err:%v\n", err)
 	}
 	defer mysql.Close()
+	//初始化ID生成器
+	if err := snowflake.Init(); err != nil {
+		fmt.Printf("Init snowflake faild, err:%v\n", err)
+	}
 	//注册路由
 	r := routes.Setup()
 

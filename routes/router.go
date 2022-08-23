@@ -29,6 +29,21 @@ func Setup() *gin.Engine {
 				"message": "login success",
 			})
 		})
+		article := admin.Group("/article")
+		{
+			article.GET("/all")
+			article.POST("/add")
+			article.POST("/delete")
+			article.POST("/update")
+
+		}
+		video := admin.Group("/video")
+		{
+			video.GET("/all", controller.GetAllVideoHandler)
+			video.POST("/add", controller.AddVideoHandler)
+			video.DELETE("/delete", controller.DeleteVideoHandler)
+			video.POST("/update")
+		}
 	}
 
 	return r
