@@ -7,7 +7,7 @@ import (
 )
 
 //TokenExpireDuration token过期时间
-const TokenExpireDuration = time.Hour * 2
+const TokenExpireDuration = time.Hour * 12
 
 var mySecret = []byte("ruizhiyuan")
 

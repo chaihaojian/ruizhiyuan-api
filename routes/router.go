@@ -32,7 +32,7 @@ func Setup() *gin.Engine {
 		article := admin.Group("/article")
 		{
 			article.GET("/all")
-			article.POST("/add")
+			article.POST("/add", controller.AddArticleHandler)
 			article.POST("/delete")
 			article.POST("/update")
 
