@@ -14,7 +14,7 @@ func AddArticleHandler(c *gin.Context) {
 	article.Author = c.PostForm("author")
 	article.Source = c.PostForm("source")
 	article.Partition = c.PostForm("partition")
-	article.Text = c.PostForm("text")
+	article.Content = c.PostForm("text")
 	cover, header, err := c.Request.FormFile("cover")
 	if err != nil {
 		zap.L().Error("c.Request.FormFile failed", zap.Error(err))
@@ -27,4 +27,16 @@ func AddArticleHandler(c *gin.Context) {
 	}
 
 	ResponseSuccess(c, nil)
+}
+
+func GetAllArticleHandler(c *gin.Context) {
+	articles, err := logic.GetAllArticle()
+	if err != nil {
+		zap.L().Error("get all video failed", zap.Error(err))
+		ResponseErrorWithMsg(c, CodeError, "get all video failed")
+		return
+	}
+
+	ResponseSuccess(c, articles)
+	return
 }

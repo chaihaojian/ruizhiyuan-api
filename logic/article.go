@@ -26,3 +26,8 @@ func AddArticleHandler(article *models.Article, cover multipart.File, header *mu
 
 	return nil
 }
+
+func GetAllArticle() ([]models.Article, error) {
+	articles, err := mysql.GetAllArticle()
+	return articles, err
+}
