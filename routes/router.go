@@ -44,6 +44,13 @@ func Setup() *gin.Engine {
 			video.DELETE("/delete", controller.DeleteVideoHandler)
 			video.POST("/update")
 		}
+		material := admin.Group("/material")
+		{
+			material.GET("/all", controller.GetAllMaterialHandler)
+			material.POST("/add", controller.AddMaterialHandler)
+			//material.DELETE("/delete", controller.DeleteMaterialHandler)
+			//material.POST("/update")
+		}
 	}
 
 	return r

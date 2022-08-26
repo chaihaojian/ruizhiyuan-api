@@ -35,3 +35,17 @@ CREATE TABLE `article` (
     PRIMARY KEY (`id`) ,
     KEY `idx_status` (`status`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+CREATE TABLE `file` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT ,
+    `file_sha1` char(40) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' ,
+    `file_name` varchar(256) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' ,
+    `file_size` bigint(20) DEFAULT '0' ,
+    `partition` varchar(256) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' ,
+    `file_addr` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' ,
+    `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+    `status` int(16) NOT NULL DEFAULT '0' ,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `idx_file_hash` (`file_sha1`),
+    KEY `idx_status` (`status`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;Ï
