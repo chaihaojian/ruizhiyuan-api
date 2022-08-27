@@ -49,7 +49,7 @@ func DeleteVideoHandler(c *gin.Context) {
 		ResponseErrorWithMsg(c, CodeInvalidParam, "invalid video id")
 		return
 	}
-	//删除数据(伪删除)
+	//删除数据
 	if err := logic.DeleteVideo(vid); err != nil {
 		zap.L().Error("logic.DeleteVideo(vid) failed", zap.Error(err))
 		ResponseErrorWithMsg(c, CodeError, "delete video failed")

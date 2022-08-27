@@ -37,3 +37,13 @@ func GetAllMaterial() ([]models.File, error) {
 	}
 	return list, nil
 }
+
+func DeleteMaterial(id int64) error {
+	sqlStr := "delete from file where id = ?"
+	_, err := db.Exec(sqlStr, id)
+	if err != nil {
+		zap.L().Error("DeleteMaterial failed", zap.Error(err))
+		return err
+	}
+	return nil
+}

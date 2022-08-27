@@ -35,3 +35,11 @@ func AddMaterial(file *models.File, f multipart.File, header *multipart.FileHead
 func GetAllMaterial() ([]models.File, error) {
 	return mysql.GetAllMaterial()
 }
+
+func DeleteMaterial(id int64) error {
+	return mysql.DeleteMaterial(id)
+}
+
+func DownloadMaterial(material *models.File) error {
+	return mysql.QueryFile(material)
+}

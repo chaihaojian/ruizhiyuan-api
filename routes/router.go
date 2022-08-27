@@ -32,9 +32,10 @@ func Setup() *gin.Engine {
 		article := admin.Group("/article")
 		{
 			article.GET("/all", controller.GetAllArticleHandler)
+			article.GET("/cover", controller.GetArticleCoverHandler)
 			article.POST("/add", controller.AddArticleHandler)
-			article.POST("/delete")
-			article.POST("/update")
+			article.DELETE("/delete", controller.DeleteArticleHandler)
+			article.POST("/update", controller.UpdateArticleHandler)
 
 		}
 		video := admin.Group("/video")
@@ -48,8 +49,8 @@ func Setup() *gin.Engine {
 		{
 			material.GET("/all", controller.GetAllMaterialHandler)
 			material.POST("/add", controller.AddMaterialHandler)
-			//material.DELETE("/delete", controller.DeleteMaterialHandler)
-			//material.POST("/update")
+			material.DELETE("/delete", controller.DeleteMaterialHandler)
+			material.GET("/download", controller.DownloadMaterialHandler)
 		}
 	}
 

@@ -37,3 +37,23 @@ func GetAllArticle() ([]models.Article, error) {
 	}
 	return article, nil
 }
+
+func DeleteArticle(id int64) error {
+	sqlStr := "delete from article where id = ?"
+	_, err := db.Exec(sqlStr, id)
+	if err != nil {
+		zap.L().Error("DeleteArticle failed", zap.Error(err))
+		return err
+	}
+	return nil
+}
+
+func UpdateArticle(a *models.Article) error {
+	sqlStr := "update article set `partition`=?, `title`=?, `outline`=?, `author`=?, `source`=?, `content`=?, `cover`=? where id= ?"
+	_, err := db.Exec(sqlStr, a.Partition, a.Title, a.Outline, a.Author, a.Source, a.Content, a.Cover, a.ID)
+	if err != nil {
+		zap.L().Error("UpdateArticle db.Exec failed", zap.Error(err))
+		return err
+	}
+	return nil
+}

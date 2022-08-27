@@ -18,5 +18,5 @@ func AddVideo(v *models.Video) error {
 }
 
 func DeleteVideo(vid int64) error {
-	return mysql.SetVideoStatus(vid, 1)
+	return mysql.DeleteVideo(vid)
 }
